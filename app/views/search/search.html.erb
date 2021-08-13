@@ -1,6 +1,7 @@
 <div class="search_container">
   <h1>検索結果</h1>
   <% @res_data["record"].each do |data| %>
-    <p><%= link_to(data["metadata"]["schema:name"][0],"/keyword/#{@keyword}/detail/#{data["metadata"]["schema:name"][0]}") %></p>
+    <% title = data["metadata"]["schema:name"][0].sub!(/. jpn..*/m,"") %>
+    <p><%= link_to(title,"/keyword/#{@keyword}/detail/#{title}") %></p>
   <% end %>
 </div>

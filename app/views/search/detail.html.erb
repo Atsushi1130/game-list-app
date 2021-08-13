@@ -3,8 +3,13 @@
   <% if @res_data["record"][0]["metadata"]["schema:datePublished"] %>
     <p>発売年：<%= @res_data["record"][0]["metadata"]["schema:datePublished"][0] %></p>
   <% end %>
-  <% if @res_data["record"][0]["metadata"]["schema:keywords"]  %>
-    <p>ジャンル：<%= @res_data["record"][0]["metadata"]["schema:keywords"][0] %></p>
+  <% if  @res_data["record"][0]["metadata"]["schema:gamePlatform"] %>
+    <p>プラットフォーム：<%= @res_data["record"][0]["metadata"]["schema:gamePlatform"][0] %></p>
+  <% end %>
+  <% if @colResData != nil %>
+    <% if @colResData["record"][0]["metadata"]["schema:keywords"] %>
+      <p>ジャンル：<%= @colResData["record"][0]["metadata"]["schema:keywords"][0] %></p>
+    <% end %>
   <% end %>
   <p><a href="https://www.google.com/search?q=<%= @title %>" target="_blank">Googleで検索</a></p>
   <p><a href="/search?keyword=<%= @keyword %>">back</a></p>

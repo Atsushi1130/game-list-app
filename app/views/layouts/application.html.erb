@@ -12,13 +12,37 @@
 
   <body>
     <div class="app_container">
-    <h1>検索</h1>
-    <%= form_tag("/search",:method => "get") do %>
-      <input type="search" name="keyword" value=<%= @keyword %>>
-      <button tyoe="submit">検索</button>
-    <% end %>
+      <h1>検索</h1>
+      <%= form_tag("/search",:method => "get") do %>
+        <input type="search" name="keyword" value=<%= @keyword %>>
+        <button tyoe="submit">検索</button>
+      <% end %>
+      <button class="js-modal-open">詳細検索</button>
+    </div>
+    <div class="modal js-modal">
+      <div class="modal__bg js-modal-close"></div>
+      <div class="modal__content">
+        <p>条件を選択してください</p>
+        <p>ジャンル</p>
+        <p>プラットフォーム</p>
+        <p>発売年</p>
+        <a class="js-modal-close" href="">閉じる</a>
+      </div>
     </div>
 
     <%= yield %>
   </body>
 </html>
+
+<script type="text/javascript">
+  $(function(){
+    $(".js-modal-open").on("click",function(){
+      $(".js-modal").fadeIn();
+      return false;
+    });
+    $(".js-modal-close").on("click",function(){
+      $(".js-modal").fadeOut();
+      return false;
+    })
+  })
+</script>
