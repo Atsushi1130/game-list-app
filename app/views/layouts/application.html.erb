@@ -12,12 +12,29 @@
 
   <body>
     <div class="app_container">
+      <% if flash[:notice] %>
+        <p class="flash"><%= flash[:notice] %></p>
+      <% end %>
+      <% if @current_user %>
+			  <p>ログイン中のユーザ：<%= @current_user.name %></p>
+      <% end %>
       <h1>検索</h1>
       <%= form_tag("/search",:method => "get") do %>
         <input type="search" name="keyword" value=<%= @keyword %>>
         <button tyoe="submit">検索</button>
       <% end %>
-      <button class="js-modal-open">詳細検索</button>
+      <% if @current_user %>
+        <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit") %></p>
+        <p><%= link_to("ログアウト","/logout") %></p>
+      <% else %>
+        <p><%= link_to("アカウント作成","/signup") %></p>
+        <p><%= link_to("ログイン","/login_form") %></p>
+      <% end %>
+      <%
+=begin%>
+ <button class="js-modal-open">詳細検索</button> 
+<%
+=end%>
     </div>
     <div class="modal js-modal">
       <div class="modal__bg js-modal-close"></div>
