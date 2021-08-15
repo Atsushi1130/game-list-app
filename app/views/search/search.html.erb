@@ -1,7 +1,18 @@
 <div class="search_container">
   <h1>検索結果</h1>
   <% @res_data["record"].each do |data| %>
-    <% title = data["metadata"]["schema:name"][0].sub!(/. jpn..*/m,"") %>
-    <p><%= link_to(title,"/keyword/#{@keyword}/detail/#{title}") %></p>
+    <% title = data["metadata"]["schema:name"][0] %>
+    <h4><%= link_to(title,"/keyword/#{@keyword}/detail/#{title}") %></h4>
+    <% if data["metadata"]["schema:gamePlatform"] %>
+      <p><%= data["metadata"]["schema:gamePlatform"][0] %></p>
+    <% end %>
+    <% if data["metadata"]["schema:datePublished"] %>
+      <p><%= data["metadata"]["schema:datePublished"][0] %></p>
+    <% end %>
+    <% if data["metadata"]["schema:publisher"] %>
+      <% data["metadata"]["schema:publisher"].each do |publisher| %>
+        <p><%= publisher %></p>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
