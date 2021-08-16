@@ -18,6 +18,7 @@
   <% if data["metadata"]["ma:accessRights"] %>
     <p><%= data["metadata"]["ma:accessRights"][0] %></p>
   <% end %>
+  <p><%= link_to("レビューをつける","/post/new/#{@title}") %></p>
   <p><a href="https://www.google.com/search?q=<%= @title %>" target="_blank">Googleで検索</a></p>
   <p><a href="/search?keyword=<%= @keyword %>">back</a></p>
 </div>

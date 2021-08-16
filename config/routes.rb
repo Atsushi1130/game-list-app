@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   post "/login" => "users#login"
   get "/user/:id/edit" => "users#edit"
   get "/logout" => "users#logout"
+
+  # posts controller
+  get "/post/new/:title" => "posts#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

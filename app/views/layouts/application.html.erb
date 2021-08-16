@@ -24,6 +24,7 @@
         <button tyoe="submit">検索</button>
       <% end %>
       <% if @current_user %>
+        <p><%= link_to("index画面へ","/") %></p>
         <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit") %></p>
         <p><%= link_to("ログアウト","/logout") %></p>
       <% else %>
