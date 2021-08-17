@@ -1,12 +1,28 @@
 <div id="form">
   <h2 class="form-title">新規投稿</h2>
-  <%= form_tag("/post/create") do %>
+  <%= form_with(url: "/post/create",model: @post) do |form| %>
     <div class="create-form-container">
         <p>ゲームタイトル：<%= @title %></p>
-        <p>星(レビューのやつ)</p>
+        <%= form.hidden_field :title,{value: @title} %>
+        <div class="form-group row" id="star">
+          <p><%= form.label :review,'評価' %></p>
+          <%= form.hidden_field :review, id: :review_star %>
+        </div>
         <p></p>
-        <p class="textarea"><textarea type="article"></textarea></p>
-        <p class="submit"><input type="submit" value="投稿"></p>
+        <p class="textarea"><%= form.text_area :article,{type: "article"} %></p>
+        <%= form.hidden_field :userId,{value: @current_user.id} %>
+        <p class="submit"><%= form.submit "投稿" %></p>
     </div>
   <% end %>
 </div>
+
+<script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'post[review]',
+    half: true,
+  });
+</script>  

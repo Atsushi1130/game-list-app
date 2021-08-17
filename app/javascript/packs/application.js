@@ -13,4 +13,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 // 追記
-require('jquery')
+// require('jquery')
+
+window.$ = window.jQuery = require('jquery'); 
+require('packs/raty')
