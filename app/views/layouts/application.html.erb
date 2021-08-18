@@ -23,7 +23,7 @@
         <input type="search" name="keyword" value=<%= @keyword %>>
         <button tyoe="submit">検索</button>
       <% end %>
-      <p><%= link_to("index画面へ","/") %></p>
+      <p><%= link_to("投稿一覧へ","/") %></p>
       <% if @current_user %>
         <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit") %></p>
         <p><%= link_to("ログアウト","/logout") %></p>

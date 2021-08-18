@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @posts = Post.all.order(created_at: :desc)
+  end
+
   def new
     @user = User.new
   end

@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/* index.html.erb */
+.post-container{
+  margin: 0 auto;
+  width: 50%;
+  border: solid red;
+}
+
+.post-detail-link{
+  text-decoration: none;
+}
+
 /*new.html.erb*/
 body,p,form,input{margin: 0}
 #form{

@@ -3,9 +3,6 @@ class SearchController < ApplicationController
   require 'net/https'
   require "uri"
 
-  def index
-  end
-
   def search
     data = {
       "q": params[:keyword],
