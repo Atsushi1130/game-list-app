@@ -1,0 +1,30 @@
+<h1><%= @user.name %></h1>
+<p><%= link_to("投稿","/user/#{@user.id}/detail") %></p>
+<p><%= link_to("いいね！","/user/#{@user.id}/likes") %></p>
+<% @posts.each do |post| %>
+  <div class="post-container">
+    <%= link_to("/post/#{post.id}/detail",class: "post-detail-link") do %>
+      <h3><%= post.title %></h3>
+      <p>評価：<%= post.review %>点</p>
+      <div id="star-rate<%= post.id %>"></div>
+      <script>
+        $('#star-rate<%= post.id%>').raty({
+          size      : 36,
+          starOff   : '<%= asset_path('star-off.png') %>',
+          starOn    : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half      : true,
+          readOnly: true,
+          score: <%= post.review %>,
+        });
+      </script>
+      <p><%= post.article %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  window.addEventListener('popstate', function(e) {
+    window.location.reload();
+  });
+</script>

@@ -4,6 +4,7 @@
     <div class="create-form-container">
         <p>ゲームタイトル：<%= @title %></p>
         <%= form.hidden_field :title,{value: @title} %>
+        <%= form.hidden_field :aipId,{value: @aipId} %>
         <div class="form-group row" id="star">
           <p><%= form.label :review,'評価' %></p>
           <%= form.hidden_field :review, id: :review_star %>

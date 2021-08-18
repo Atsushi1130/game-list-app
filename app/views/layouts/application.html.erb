@@ -8,15 +8,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
     <div class="app_container">
       <% if flash[:notice] %>
         <p class="flash"><%= flash[:notice] %></p>
-      <% end %>
-      <% if @current_user %>
-			  <p>ログイン中のユーザ：<%= @current_user.name %></p>
       <% end %>
       <h1>検索</h1>
       <%= form_tag("/search",:method => "get") do %>
@@ -25,6 +24,7 @@
       <% end %>
       <p><%= link_to("投稿一覧へ","/") %></p>
       <% if @current_user %>
+        <p><%= link_to(@current_user.name,"/user/#{@current_user.id}/detail") %></p>
         <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit") %></p>
         <p><%= link_to("ログアウト","/logout") %></p>
       <% else %>

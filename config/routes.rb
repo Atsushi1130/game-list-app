@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # search controller
   get "/search" => "search#search"
-  get "/keyword/:keyword/detail/:title" => "search#detail"
+  get "/keyword/:keyword/detail/:aipId" => "search#detail"
 
   # users controller
   get "/" => "users#index"
@@ -11,11 +11,17 @@ Rails.application.routes.draw do
   post "/login" => "users#login"
   get "/user/:id/edit" => "users#edit"
   get "/logout" => "users#logout"
+  get "/user/:id/detail" => "users#detail"
+  get "/user/:id/likes" => "users#likes"
 
   # posts controller
-  get "/post/new/:title" => "posts#new"
+  get "/post/new/:aipId" => "posts#new"
   post "/post/create" => "posts#create"
   get "/post/:id/detail" => "posts#detail"
   get "/post/:id/delete" => "posts#delete"
+
+  # likes controller
+  post "/likes/post/:id/create" => "likes#create"
+  post "/likes/post/:id/delete" => "likes#delete"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

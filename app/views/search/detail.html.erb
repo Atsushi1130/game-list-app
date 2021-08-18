@@ -1,6 +1,6 @@
 <div class="detail_container">
-  <h1><%= @title %></h1>
   <% data = @res_data["record"][0] %>
+  <h1><%= data["metadata"]["schema:name"][0] %></h1>
   <% if data["metadata"]["schema:gamePlatform"] %>
     <p><%= data["metadata"]["schema:gamePlatform"][0] %></p>
   <% end %>
@@ -19,7 +19,7 @@
     <p><%= data["metadata"]["ma:accessRights"][0] %></p>
   <% end %>
   <% if @current_user %>
-    <p><%= link_to("レビューをつける","/post/new/#{@title}") %></p>
+    <p><%= link_to("レビューをつける","/post/new/#{@aipId}") %></p>
   <% end %>
   <p><a href="https://www.google.com/search?q=<%= @title %>" target="_blank">Googleで検索</a></p>
   <p><a href="/search?keyword=<%= @keyword %>">back</a></p>

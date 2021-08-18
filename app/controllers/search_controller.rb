@@ -20,9 +20,9 @@ class SearchController < ApplicationController
   end
 
   def detail
-    @title = params[:title]
+    @aipId = params[:aipId]
     data = {
-      "name": @title,
+      "aipId": @aipId
     }
     query = data.to_query
     uri = URI.parse("https://mediaarts-db.bunka.go.jp/api/search?fieldId=game&categoryId=gm-item&subcategoryId=gm301&sort=date&"+query)

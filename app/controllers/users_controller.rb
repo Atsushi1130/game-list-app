@@ -45,4 +45,14 @@ class UsersController < ApplicationController
     flash[:notice] = "ログアウトしました"
     redirect_to("/")
   end
+
+  def detail
+    @user = User.find_by(id: params[:id])
+    @posts = Post.where(userId: @user.id)
+  end
+
+  def likes
+    @user = User.find_by(id: params[:id])
+    @likes = Like.where(userId: @user.id).order(created_at: :desc)
+  end
 end

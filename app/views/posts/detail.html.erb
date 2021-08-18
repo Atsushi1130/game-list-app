@@ -1,21 +1,31 @@
 <div class="contents-container">
   <h1><%= @post.title %></h1>
   <p>評価：<%= @post.review %>点</p>
-      <div id="star-rate<%= @post.id %>"></div>
-      <script>
-        $('#star-rate<%= @post.id%>').raty({
-          size      : 36,
-          starOff   : '<%= asset_path('star-off.png') %>',
-          starOn    : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          half      : true,
-          readOnly: true,
-          score: <%= @post.review %>,
-        });
-      </script>
+  <div id="star-rate<%= @post.id %>"></div>
+  <script>
+    $('#star-rate<%= @post.id%>').raty({
+      size      : 36,
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half      : true,
+      readOnly: true,
+      score: <%= @post.review %>,
+    });
+  </script>
   <p><%= @post.article %></p>
   <p><%= @post.created_at %></p>
   <% if @current_user %>
+    <% if Like.find_by(postId: @post.id,userId: @current_user.id) %>
+      <%= link_to("/likes/post/#{@post.id}/delete",{method: "post"}) do %>
+        <span class="fa fa-heart like-btn-unlike"></span>
+      <% end %>
+    <% else %>
+      <%= link_to("/likes/post/#{@post.id}/create",{method: "post"}) do %>
+        <span class="fa fa-heart like-btn"></span>
+      <% end %>
+    <% end %>
+    <%= @likes_count %>
     <% if @post.userId == @current_user.id %>
       <p><%= link_to("消去","/post/#{@post.id}/delete") %></p>
     <% end %>
