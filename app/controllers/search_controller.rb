@@ -16,6 +16,8 @@ class SearchController < ApplicationController
     req = Net::HTTP::Get.new(uri)
     res = http.request(req)
     @res_data = JSON.parse(res.body)
+    @res_data = @res_data["record"]
+    @res_data = Kaminari.paginate_array(@res_data).page(params[:page]).per(10)
     @keyword = params[:keyword]
   end
 

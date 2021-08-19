@@ -55,4 +55,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @likes = Like.where(userId: @user.id).order(created_at: :desc)
   end
+
+  def nec_login
+  end
 end

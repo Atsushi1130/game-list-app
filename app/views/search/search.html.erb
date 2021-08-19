@@ -1,19 +1,25 @@
 <div class="search_container">
   <h1>検索結果</h1>
-  <% @res_data["record"].each do |data| %>
-    <% title = data["metadata"]["schema:name"][0] %>
-    <% aipId = data["aipId"] %>
-    <h4><%= link_to(title,"/keyword/#{@keyword}/detail/#{aipId}") %></h4>
-    <% if data["metadata"]["schema:gamePlatform"] %>
-      <p><%= data["metadata"]["schema:gamePlatform"][0] %></p>
-    <% end %>
-    <% if data["metadata"]["schema:datePublished"] %>
-      <p><%= data["metadata"]["schema:datePublished"][0] %></p>
-    <% end %>
-    <% if data["metadata"]["schema:publisher"] %>
-      <% data["metadata"]["schema:publisher"].each do |publisher| %>
-        <p><%= publisher %></p>
+  <% @res_data.each do |data| %>
+    <div class="post-container">
+      <% aipId = data["aipId"] %>
+      <%= link_to("/keyword/#{@keyword}/detail/#{aipId}",class: "post-detail-link") do %>
+        <% title = data["metadata"]["schema:name"][0] %>
+        <h4><%= title %></h4>
+        <% if data["metadata"]["schema:gamePlatform"] %>
+          <p><%= data["metadata"]["schema:gamePlatform"][0] %></p>
+        <% end %>
+        <% if data["metadata"]["schema:datePublished"] %>
+          <p><%= data["metadata"]["schema:datePublished"][0] %></p>
+        <% end %>
+        <% if data["metadata"]["schema:publisher"] %>
+          <% data["metadata"]["schema:publisher"].each do |publisher| %>
+            <p><%= publisher %></p>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
 </div>
+
+<%= paginate @res_data %>

@@ -14,6 +14,46 @@
  *= require_self
  */
 
+ /*  フォントの読み込み　*/
+ @font-face{
+   font-family: "logotype";
+   src: url("./ロゴたいぷゴシックCondense.otf");
+ }
+
+ .text-center{
+  text-align: center;
+ }
+
+ .text-right{
+  text-align: right;
+}
+
+.text-left{
+  text-align: left;
+  font-family: 'Permanent Marker', cursive;;
+}
+
+.text-dec-none{
+  text-decoration: none;
+}
+
+/* application.html.erb */
+
+header{
+  position: fixed;
+  width: 100%;
+}
+.body{
+  padding-top: 160px;
+}
+
+.logo{
+  font-size: 32px;
+  color: white;
+  width: 40%;
+  float: left;
+}
+
 .app_container{
   text-align: center;
   background-color: #C25100;
@@ -21,25 +61,40 @@
   padding: 20px 20px 20px 40px;
 }
 
-.modal{
-  display: none;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  width: 100%;
+.search-box{
+  padding-top: 10px;
+  text-align: right;
+  padding-right: 5%;
 }
-.modal__bg{
-  background: rgba(0,0,0,0.3);
-  height: 100vh;
-  position: absolute;
-  width: 100%;
+.search-textbox{
+  border: solid 5px white;
 }
-.modal__content{
-    background: #fff;
-    left: 50%;
-    padding: 40px;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 60%;
+
+.link-contents{
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.link-contents p{
+  float: left;
+  width: 33%;
+  font-family: "logotype";
+  font-weight: bold;;
+}
+.link-contents p :hover{
+  color: #FFFF66;
+}
+
+.app-text-dec-none{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+
+.submit-button{
+  background-color: #55FFFF;
+  border: solid #55FFFF
+}
+.fas{
+  font-size: 16px;
 }

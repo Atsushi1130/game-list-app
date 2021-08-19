@@ -14,7 +14,9 @@
     });
   </script>
   <p><%= @post.article %></p>
-  <p><%= @post.created_at %></p>
+  <div class="text-right">
+    <p><%= @post.created_at.to_s(:datetime_jp) %></p>
+  </div>
   <% if @current_user %>
     <% if Like.find_by(postId: @post.id,userId: @current_user.id) %>
       <%= link_to("/likes/post/#{@post.id}/delete",{method: "post"}) do %>
@@ -29,6 +31,17 @@
     <% if @post.userId == @current_user.id %>
       <p><%= link_to("消去","/post/#{@post.id}/delete") %></p>
     <% end %>
+  <% else %>
+    <%= link_to("/necessary_login") do %>
+      <span class="fa fa-heart like-btn"></span>
+    <% end %>
+    <%= @likes_count %>
   <% end %>
   <p><%= link_to("戻る","/") %></p>
 </div>
+
+<script>
+  window.addEventListener('popstate', function(e) {
+    window.location.reload();
+  });
+</script>

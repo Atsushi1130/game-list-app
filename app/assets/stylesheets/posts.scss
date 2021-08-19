@@ -16,8 +16,11 @@ textarea[type="article"]{
 
 /* detail.html.erb */
 .contents-container{
+  margin: 15px auto;
+  padding: 20px;
   width: 50%;
-  margin: 0 auto;
+  background-color:#EEEEEE;
+  text-align: center;
 }
 
 .like-btn{

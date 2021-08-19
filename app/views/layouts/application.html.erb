@@ -10,45 +10,47 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
-    <div class="app_container">
-      <% if flash[:notice] %>
-        <p class="flash"><%= flash[:notice] %></p>
-      <% end %>
-      <h1>検索</h1>
-      <%= form_tag("/search",:method => "get") do %>
-        <input type="search" name="keyword" value=<%= @keyword %>>
-        <button tyoe="submit">検索</button>
-      <% end %>
-      <p><%= link_to("投稿一覧へ","/") %></p>
-      <% if @current_user %>
-        <p><%= link_to(@current_user.name,"/user/#{@current_user.id}/detail") %></p>
-        <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit") %></p>
-        <p><%= link_to("ログアウト","/logout") %></p>
-      <% else %>
-        <p><%= link_to("アカウント作成","/signup") %></p>
-        <p><%= link_to("ログイン","/login_form") %></p>
-      <% end %>
-      <%
-=begin%>
- <button class="js-modal-open">詳細検索</button> 
-<%
-=end%>
-    </div>
-    <div class="modal js-modal">
-      <div class="modal__bg js-modal-close"></div>
-      <div class="modal__content">
-        <p>条件を選択してください</p>
-        <p>ジャンル</p>
-        <p>プラットフォーム</p>
-        <p>発売年</p>
-        <a class="js-modal-close" href="">閉じる</a>
+    <header>
+      <div class="app_container">
+        <% if flash[:notice] %>
+          <p class="flash"><%= flash[:notice] %></p>
+        <% end %>
+        <div class="text-left">
+          <%= link_to("/") do %>
+            <div class="logo">
+              <p>Game Factory</p>
+            </div>
+          <% end %>
+        </div>
+        <div class="search-box">
+          <%= form_tag("/search",:method => "get") do %>
+            <input class="search-textbox" type="search" name="keyword" value=<%= @keyword %>>
+            <button type="submit" class="submit-button">
+              <i class="fas fa-search"></i>
+            </button>
+          <% end %>
+        </div>
+        <div class="link-contents">
+          <p><%= link_to("投稿一覧へ","/",{class: "app-text-dec-none"}) %></p>
+          <% if @current_user %>
+            <p><%= link_to(@current_user.name,"/user/#{@current_user.id}/detail",{class: "app-text-dec-none"}) %></p>
+            <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit",{class: "app-text-dec-none"}) %></p>
+            <p><%= link_to("ログアウト","/logout",{class: "app-text-dec-none"}) %></p>
+          <% else %>
+            <p><%= link_to("アカウント作成","/signup",{class: "app-text-dec-none"}) %></p>
+            <p><%= link_to("ログイン","/login_form",{class: "app-text-dec-none"}) %></p>
+          <% end %>
+        </div>
       </div>
+    </header>
+    <div class="body">
+      <%= yield %>
     </div>
-
-    <%= yield %>
   </body>
 </html>
 

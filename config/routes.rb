@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/logout" => "users#logout"
   get "/user/:id/detail" => "users#detail"
   get "/user/:id/likes" => "users#likes"
+  get "/necessary_login" => "users#nec_login"
 
   # posts controller
   get "/post/new/:aipId" => "posts#new"
