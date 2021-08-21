@@ -11,7 +11,11 @@
         </div>
         <p></p>
         <p class="textarea"><%= form.text_area :article,{type: "article"} %></p>
-        <%= form.hidden_field :userId,{value: @current_user.id} %>
+        <% if @current_user %>
+          <%= form.hidden_field :userId,{value: @current_user.id} %>
+        <% else %>
+          <%= form.hidden_field :userId,{value: "名無しの投稿者"} %>
+        <% end %>
         <p class="submit"><%= form.submit "投稿" %></p>
     </div>
   <% end %>

@@ -50,8 +50,19 @@ header{
 .logo{
   font-size: 32px;
   color: white;
-  width: 40%;
+  width: 30%;
   float: left;
+}
+
+.user-page-link p{
+  float: left;
+  font-family: "logotype";
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+}
+.user-page-link p :hover{
+  color: #FFFF66;
 }
 
 .app_container{
@@ -79,7 +90,7 @@ header{
   float: left;
   width: 33%;
   font-family: "logotype";
-  font-weight: bold;;
+  font-weight: bold;
 }
 .link-contents p :hover{
   color: #FFFF66;
@@ -89,6 +100,12 @@ header{
   text-decoration: none;
   color: white;
   font-size: 20px;
+}
+.app-text-dec-none:hover{
+  text-decoration: none;
+}
+.app-text-dec-none:active{
+  text-decoration: none;
 }
 
 .submit-button{

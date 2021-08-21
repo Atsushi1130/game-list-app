@@ -17,6 +17,14 @@
       </script>
       <p><%= post.article %></p>
     <% end %>
+    <div class="text-right">
+      <% user = User.find_by(id: post.userId) %>
+      <% if user != nil %>
+        <p>投稿者：<%= link_to(user.name,"/user/#{user.id}/detail") %></p>
+      <% else %>
+        <p>投稿者：名無しの投稿者</p>
+      <% end %>
+    </div>
   </div>
 <% end %>
 

@@ -14,16 +14,13 @@
     });
   </script>
   <p><%= @post.article %></p>
-  <div class="text-right">
-    <p><%= @post.created_at.to_s(:datetime_jp) %></p>
-  </div>
   <% if @current_user %>
     <% if Like.find_by(postId: @post.id,userId: @current_user.id) %>
-      <%= link_to("/likes/post/#{@post.id}/delete",{method: "post"}) do %>
+      <%= link_to("/likes/post/#{@post.id}/delete",{method: "post"}, {class: "favo-button"}) do %>
         <span class="fa fa-heart like-btn-unlike"></span>
       <% end %>
     <% else %>
-      <%= link_to("/likes/post/#{@post.id}/create",{method: "post"}) do %>
+      <%= link_to("/likes/post/#{@post.id}/create",{method: "post"}, {class: "favo-button"}) do %>
         <span class="fa fa-heart like-btn"></span>
       <% end %>
     <% end %>
@@ -32,11 +29,20 @@
       <p><%= link_to("消去","/post/#{@post.id}/delete") %></p>
     <% end %>
   <% else %>
-    <%= link_to("/necessary_login") do %>
+    <%= link_to("/necessary_login", {class: "favo-button"}) do %>
       <span class="fa fa-heart like-btn"></span>
     <% end %>
     <%= @likes_count %>
   <% end %>
+  <div class="text-right">
+    <% user = User.find_by(id: @post.userId) %>
+      <% if user != nil %>
+        <p>投稿者：<%= link_to(user.name,"/user/#{user.id}/detail") %></p>
+      <% else %>
+        <p>投稿者：名無しの投稿者</p>
+      <% end %>
+    <p><%= @post.created_at.to_s(:datetime_jp) %></p>
+  </div>
   <p><%= link_to("戻る","/") %></p>
 </div>
 

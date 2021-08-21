@@ -8,10 +8,12 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -27,6 +29,11 @@
             </div>
           <% end %>
         </div>
+        <% if @current_user %>
+        <div class="user-page-link">
+          <p>ログイン中のユーザ：<%= link_to(@current_user.name,"/user/#{@current_user.id}/detail",{class: "app-text-dec-none"}) %></p>
+          </div>
+        <% end %>
         <div class="search-box">
           <%= form_tag("/search",:method => "get") do %>
             <input class="search-textbox" type="search" name="keyword" value=<%= @keyword %>>
@@ -38,7 +45,6 @@
         <div class="link-contents">
           <p><%= link_to("投稿一覧へ","/",{class: "app-text-dec-none"}) %></p>
           <% if @current_user %>
-            <p><%= link_to(@current_user.name,"/user/#{@current_user.id}/detail",{class: "app-text-dec-none"}) %></p>
             <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit",{class: "app-text-dec-none"}) %></p>
             <p><%= link_to("ログアウト","/logout",{class: "app-text-dec-none"}) %></p>
           <% else %>

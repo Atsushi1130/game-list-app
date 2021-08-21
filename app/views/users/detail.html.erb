@@ -1,6 +1,14 @@
-<h1><%= @user.name %></h1>
-<p><%= link_to("投稿","/user/#{@user.id}/detail") %></p>
-<p><%= link_to("いいね！","/user/#{@user.id}/likes") %></p>
+<div class="text-center">
+  <h1><%= @user.name %></h1>
+</div>
+<div class="user-detail-link">
+  <div class="user-detail-half">
+  <%= link_to("投稿","/user/#{@user.id}/detail",{class: "detail-text-dec"}) %>
+  </div>
+  <div class="user-detail-half">
+  <%= link_to("いいね！","/user/#{@user.id}/likes",{class: "detail-text-dec"}) %>
+  </div>
+</div>
 <% @posts.each do |post| %>
   <div class="post-container">
     <%= link_to("/post/#{post.id}/detail",class: "post-detail-link") do %>
