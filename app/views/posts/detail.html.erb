@@ -26,7 +26,29 @@
       <% end %>
     <p><%= @post.created_at.to_s(:datetime_jp) %></p>
   </div>
+  <div class="comment-container">
+  <%= form_with model: @comment, url: "/comment/create" do |form| %>
+    <%= form.hidden_field :userId,{value: @current_user.id} %>
+    <%= form.hidden_field :postId,{value: @post.id} %>
+    <%= form.text_field :content, class: "comment-area" %>
+    <%= form.submit "コメント", class: "comment-submit" %>
+  <% end %>
   <p><%= link_to "戻る", :back %></p>
+</div>
+</div>
+<div class="comments">
+  <h3>コメント</h3>
+  <% if @comments.length > 0 %>
+    <% @comments.each do |comment| %>
+      <div class="comment-post">
+        <% user = User.find_by(id: comment.userId) %>
+        <p><%= user.name %></p>
+        <p><%= comment.content %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <p>コメントがまだありません</p>
+  <% end %>
 </div>
 
 <script>

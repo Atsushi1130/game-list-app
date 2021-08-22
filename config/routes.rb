@@ -24,5 +24,9 @@ Rails.application.routes.draw do
   # likes controller
   post "/likes/post/:id/create" => "likes#create"
   post "/likes/post/:id/delete" => "likes#delete"
+
+  # commnet controller
+  post "/comment/create" => "comments#create"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

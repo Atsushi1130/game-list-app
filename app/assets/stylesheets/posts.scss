@@ -23,11 +23,13 @@ textarea[type="article"]{
 
 /* detail.html.erb */
 .contents-container{
-  margin: 15px auto;
+  margin: 15px 0;
+  margin-left: 10%;
   padding: 20px;
   width: 50%;
   background-color:#EEEEEE;
   text-align: center;
+  float: left;
 }
 
 .like-btn{
@@ -46,4 +48,18 @@ textarea[type="article"]{
 }
 .favo-button:active{
   text-decoration: none;
+}
+
+.comments{
+  width: 40%;
+  float: right;
+}
+.comments h3{
+  text-align: center;
+}
+.comment-post{
+  margin: 15px auto;
+  padding: 20px;
+  width: 80%;
+  background-color:#EEEEEE;
 }

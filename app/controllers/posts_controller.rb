@@ -33,6 +33,8 @@ class PostsController < ApplicationController
 
   def detail
     @post = Post.find_by(id: params[:id])
+    @commet = Comment.new
+    @comments = Comment.where(postId: @post.id).order(created_at: :desc)
   end
 
   def delete
