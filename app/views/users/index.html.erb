@@ -24,6 +24,10 @@
       <% else %>
         <p>投稿者：名無しの投稿者</p>
       <% end %>
+      <p><%= post.created_at.to_s(:datetime_jp) %></p>
+      <div id="likes_buttons_<%= post.id %>">
+        <%= render partial: 'users/index',locals: {post: post} %>
+      </div>
     </div>
   </div>
 <% end %>

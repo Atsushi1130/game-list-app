@@ -33,7 +33,6 @@ class PostsController < ApplicationController
 
   def detail
     @post = Post.find_by(id: params[:id])
-    @likes_count = Like.where(postId: @post.id).count
   end
 
   def delete

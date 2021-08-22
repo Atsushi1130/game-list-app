@@ -3,10 +3,10 @@
 </div>
 <div class="user-detail-link">
   <div class="user-detail-half">
-  <%= link_to("投稿","/user/#{@user.id}/detail",{class: "detail-text-dec"}) %>
+    <%= link_to("投稿","/user/#{@user.id}/detail",{class: "detail-text-dec"}) %>
   </div>
   <div class="user-detail-half">
-  <%= link_to("いいね！","/user/#{@user.id}/likes",{class: "detail-text-dec"}) %>
+    <%= link_to("いいね！","/user/#{@user.id}/likes",{class: "detail-text-dec"}) %>
   </div>
 </div>
 <% @posts.each do |post| %>
@@ -28,6 +28,11 @@
       </script>
       <p><%= post.article %></p>
     <% end %>
+    <div class="text-right">
+      <div id="likes_buttons_<%= post.id %>">
+        <%= render partial: 'users/index',locals: {post: post} %>
+      </div>
+    </div>
   </div>
 <% end %>
 

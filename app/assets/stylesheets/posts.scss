@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+/* new.html.erb */
 .textarea{
     margin-bottom: 20px;
 }
@@ -12,6 +13,12 @@ textarea[type="article"]{
   font-size: 14px;
   display: block;
   margin:0 auto;
+  resize: none;
+  height: 100px;
+}
+
+.form-group{
+  text-align: center;
 }
 
 /* detail.html.erb */

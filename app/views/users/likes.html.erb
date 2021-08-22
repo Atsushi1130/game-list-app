@@ -29,6 +29,11 @@
       </script>
       <p><%= post.article %></p>
     <% end %>
+    <div class="text-right">
+      <div id="likes_buttons_<%= post.id %>">
+        <%= render partial: 'users/index',locals: {post: post} %>
+      </div>
+    </div>
   </div>
 <% end %>
 

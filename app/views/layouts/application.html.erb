@@ -18,10 +18,10 @@
 
   <body>
     <header>
+      <% if flash[:notice] %>
+        <p class="flash"><%= flash[:notice] %></p>
+      <% end %>
       <div class="app_container">
-        <% if flash[:notice] %>
-          <p class="flash"><%= flash[:notice] %></p>
-        <% end %>
         <div class="text-left">
           <%= link_to("/") do %>
             <div class="logo">
@@ -61,14 +61,11 @@
 </html>
 
 <script type="text/javascript">
-  $(function(){
-    $(".js-modal-open").on("click",function(){
-      $(".js-modal").fadeIn();
-      return false;
-    });
-    $(".js-modal-close").on("click",function(){
-      $(".js-modal").fadeOut();
-      return false;
-    })
+  $(function() {
+    var height = $("header").height();
+    $("body").css("margin-top",height+20);
   })
+  // $(function() {
+  //   setTimeout("$('.flash').fadeOut('slow')",2000);
+  // })
 </script>

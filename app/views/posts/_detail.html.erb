@@ -1,0 +1,21 @@
+<% likes_count = Like.where(postId: post.id).count %>
+<% if @current_user %>
+	<% if Like.find_by(postId: post.id,userId: @current_user.id) %>
+		<%= link_to "/likes/post/#{post.id}/delete",method: :post,remote: true do %>
+			<span class="fa fa-heart like-btn-unlike"></span>
+		<% end %>
+	<% else %>
+		<%= link_to "/likes/post/#{post.id}/create",method: :post, remote: true do %>
+			<span class="fa fa-heart like-btn"></span>
+		<% end %>
+	<% end %>
+	<%= likes_count %>
+	<% if post.userId == @current_user.id %>
+		<p><%= link_to("消去","/post/#{post.id}/delete") %></p>
+	<% end %>
+<% else %>
+	<%= link_to("/necessary_login", {class: "favo-button"}) do %>
+		<span class="fa fa-heart like-btn"></span>
+	<% end %>
+	<%= likes_count %>
+<% end %>
