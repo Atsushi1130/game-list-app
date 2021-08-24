@@ -1,5 +1,5 @@
 <div class="contents-container">
-  <h1><%= @post.title %></h1>
+  <h1><%= link_to(@post.title,"/search/post/#{@post.id}/detail/#{@post.aipId}") %></h1>
   <p>評価：<%= @post.review %>点</p>
   <div id="star-rate<%= @post.id %>"></div>
   <script>
@@ -27,11 +27,13 @@
     <p><%= @post.created_at.to_s(:datetime_jp) %></p>
   </div>
   <div class="comment-container">
-  <%= form_with model: @comment, url: "/comment/create" do |form| %>
-    <%= form.hidden_field :userId,{value: @current_user.id} %>
-    <%= form.hidden_field :postId,{value: @post.id} %>
-    <%= form.text_field :content, class: "comment-area" %>
-    <%= form.submit "コメント", class: "comment-submit" %>
+  <% if @current_user %>
+    <%= form_with model: @comment, url: "/comment/create" do |form| %>
+      <%= form.hidden_field :userId,{value: @current_user.id} %>
+      <%= form.hidden_field :postId,{value: @post.id} %>
+      <%= form.text_field :content, class: "comment-area" %>
+      <%= form.submit "コメント", class: "comment-submit" %>
+    <% end %>
   <% end %>
   <p><%= link_to "戻る", :back %></p>
 </div>
@@ -44,6 +46,9 @@
         <% user = User.find_by(id: comment.userId) %>
         <p><%= user.name %></p>
         <p><%= comment.content %></p>
+        <% if @current_user.id == user.id %>
+          <p><%= link_to "削除","/post/#{@post.id}/comment/#{comment.id}/delete", method: "post" %></p>
+        <% end %>
       </div>
     <% end %>
   <% else %>

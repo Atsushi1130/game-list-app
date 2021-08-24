@@ -34,5 +34,22 @@ class SearchController < ApplicationController
     res = http.request(req)
     @res_data = JSON.parse(res.body)
     @keyword = params[:keyword]
+    @posts = Post.where(aipId: @aipId).order(created_at: :desc)
+  end
+
+  def link_detail
+    @aipId = params[:aipId]
+    data = {
+      "aipId": @aipId
+    }
+    query = data.to_query
+    uri = URI.parse("https://mediaarts-db.bunka.go.jp/api/search?fieldId=game&categoryId=gm-item&subcategoryId=gm301&sort=date&"+query)
+    http = Net::HTTP.new(uri.host,uri.port)
+    http.use_ssl = true
+    req = Net::HTTP::Get.new(uri)
+    res = http.request(req)
+    @res_data = JSON.parse(res.body)
+    @posts = Post.where(aipId: @aipId).order(created_at: :desc)
+    @postId = params[:postId]
   end
 end

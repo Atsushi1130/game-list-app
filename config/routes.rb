@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # search controller
   get "/search" => "search#search"
   get "/keyword/:keyword/detail/:aipId" => "search#detail"
+  get "/search/post/:postId/detail/:aipId" => "search#link_detail"
 
   # users controller
   get "/" => "users#index"
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
   # commnet controller
   post "/comment/create" => "comments#create"
+  post "/post/:postId/comment/:commentId/delete" => "comments#delete"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

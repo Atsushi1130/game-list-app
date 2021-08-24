@@ -10,7 +10,8 @@
           <%= form.hidden_field :review, id: :review_star %>
         </div>
         <p></p>
-        <p class="textarea"><%= form.text_area :article,{type: "article"} %></p>
+        <p class="textarea"><%= form.text_area :article,type:"article",class:"word-counter" %></p>
+        <P class="js-text-count"></P>
         <% if @current_user %>
           <%= form.hidden_field :userId,{value: @current_user.id} %>
         <% else %>
@@ -29,5 +30,29 @@
     starHalf: '<%= asset_path('star-half.png') %>',
     scoreName: 'post[review]',
     half: true,
+  });
+  $(function() {
+    var count = $(".word-counter").text().replace(/\n/g,"改行").length;
+    var now_count = 140 - count;
+    if(count > 140){
+      $(".js-text-count").css("color","red");
+    }
+    if(now_count === 140){
+      $(".js-text-count").text("残り140文字")
+    } else {
+      $(".js-text-count").text("残り" + now_count + "文字")
+    }
+
+    $(".word-counter").on("keyup",function(){
+      var count = $(this).val().replace(/\n/g,"改行").length;
+      var now_count = 140 - count;
+
+      if(count > 140){
+        $(".js-text-count").css("color","red")
+      } else {
+        $(".js-text-count").css("color","black")
+      }
+      $(".js-text-count").text("残り"+now_count+"文字");
+    });
   });
 </script>  

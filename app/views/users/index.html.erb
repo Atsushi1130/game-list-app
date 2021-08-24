@@ -25,8 +25,17 @@
         <p>投稿者：名無しの投稿者</p>
       <% end %>
       <p><%= post.created_at.to_s(:datetime_jp) %></p>
+      <% if @current_user %>
+        <% my_comment = Comment.where(postId: post.id,userId: @current_user.id) %>
+        <% if my_comment.length >= 1 %>
+          <i class="fas fa-comment my-comment"></i>
+        <% else %>
+          <i class="fas fa-comment no-comment"></i>
+        <% end %>
+      <% else %>
+        <i class="fas fa-comment no-comment"></i>
+      <% end %>
       <% comment_count = Comment.where(postId: post.id).count %>
-      <i class="fas fa-comment"></i>
       <%= comment_count %>
       <div id="likes_buttons_<%= post.id %>">
         <%= render partial: 'users/index',locals: {post: post} %>
