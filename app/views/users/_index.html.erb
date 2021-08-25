@@ -9,10 +9,9 @@
 			<span class="fa fa-heart like-btn"></span>
 		<% end %>
 	<% end %>
-	<%= likes_count %>
 <% else %>
 	<%= link_to("/necessary_login", {class: "favo-button"}) do %>
 		<span class="fa fa-heart like-btn"></span>
 	<% end %>
-	<%= likes_count %>
 <% end %>
+<%= likes_count %>

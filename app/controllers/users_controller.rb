@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @posts = Post.all.order(created_at: :desc)
-    @kaminari_data = Kaminari.paginate_array(@posts).page(params[:page]).per(2)
+    @kaminari_data = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def new
