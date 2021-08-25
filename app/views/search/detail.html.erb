@@ -27,7 +27,7 @@
   <% if @posts.length > 0 %>
     <% @posts.each do |post| %>
       <div class="comment-post">
-        <%= render partial: 'shared/postContent',locals: {post: post} %>
+        <%= render partial: 'shared/searchComment',locals: {post: post} %>
       </div>
     <% end %>
   <% else %>

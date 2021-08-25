@@ -9,13 +9,26 @@
   <%= link_to("いいね！","/user/#{@user.id}/likes",{class: "detail-text-dec"}) %>
   </div>
 </div>
-<% @likes.each do |like| %>
-	<% post = Post.find_by(id: like.postId) %>
-  <%= render partial: 'shared/postContent',locals: {post: post} %>
-<% end %>
+<div class="scroll-list jscroll">
+  <% @likes.each do |like| %>
+    <% post = Post.find_by(id: like.postId) %>
+    <%= render partial: 'shared/postContent',locals: {post: post} %>
+  <% end %>
+  <div class="paginate">
+    <%= paginate @likes %>
+  </div>
+</div>
 
 <script>
   window.addEventListener('popstate', function(e) {
     window.location.reload();
   });
+
+  var jscrollOption = {
+    loadingHtml: "読み込み中・・・",
+    autoTrigger: true,
+    padding: 20,
+    contentSelector: ".scroll-list"
+  }
+  $(".jscroll").jscroll(jscrollOption);
 </script>

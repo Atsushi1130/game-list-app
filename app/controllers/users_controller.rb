@@ -49,12 +49,14 @@ class UsersController < ApplicationController
 
   def detail
     @user = User.find_by(id: params[:id])
-    @posts = Post.where(userId: @user.id)
+    @posts = Post.where(userId: @user.id).order(created_at: :desc)
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
   end
 
   def likes
     @user = User.find_by(id: params[:id])
     @likes = Like.where(userId: @user.id).order(created_at: :desc)
+    @likes = Kaminari.paginate_array(@likes).page(params[:page]).per(10)
   end
 
   def nec_login
