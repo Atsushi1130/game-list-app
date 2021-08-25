@@ -17,4 +17,6 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery'); 
 require('packs/raty')
-// require('packs/jscroll')
+// require('packs/jquery.jscroll.min.js')
+// require('jscroll')
+// require('test.js')
