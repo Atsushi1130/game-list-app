@@ -57,14 +57,11 @@
   });
 
   // 自動ページスクロール機能
-  $(window).on('scroll', function() {
-    scrollHeight = $(document).height();
-    scrollPosition = $(window).height() + $(window).scrollTop();
-    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-      $('.jscroll').jscroll({
-        contentSelector: ".scroll-list",
-        nextSelector: 'span.next:last a',
-      });
-    }
-  });
+  var jscrollOption = {
+    loadingHtml: "読み込み中・・・",
+    autoTrigger: true,
+    padding: 20,
+    contentSelector: ".scroll-list"
+  }
+  $(".jscroll").jscroll(jscrollOption);
 </script>

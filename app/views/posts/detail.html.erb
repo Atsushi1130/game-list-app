@@ -46,8 +46,10 @@
         <% user = User.find_by(id: comment.userId) %>
         <p><%= user.name %></p>
         <p><%= comment.content %></p>
-        <% if @current_user.id == user.id %>
-          <p><%= link_to "削除","/post/#{@post.id}/comment/#{comment.id}/delete", method: "post" %></p>
+        <% if @current_user %>
+          <% if @current_user.id == user.id %>
+            <p><%= link_to "削除","/post/#{@post.id}/comment/#{comment.id}/delete", method: "post" %></p>
+          <% end %>
         <% end %>
       </div>
     <% end %>

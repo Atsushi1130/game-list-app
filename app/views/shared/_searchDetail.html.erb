@@ -23,7 +23,7 @@
 	<% if @keyword %>
   	<p><a href="/search?keyword=<%= @keyword %>">戻る</a></p>
 	<% else %>
-		<p><a href="/post/<%= @postId %>/detail">戻る</a></p>
+		<p><%= link_to "戻る",:back %></p>
 	<% end %>
 </div>
 <div class="comments">
