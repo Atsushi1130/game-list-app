@@ -4,13 +4,14 @@
 
 /* index.html.erb */
 .post-container{
-  margin: 15px auto;
-  padding: 20px;
+  margin: 10px auto;
+  padding: 10px;
   width: 50%;
   background-color:#EEEEEE;
 }
 
 .post-detail-link{
+  display: block;
   text-decoration: none;
 }
 .post-detail-link:hover{
@@ -31,6 +32,22 @@
 }
 .no-comment{
   color: 	#555555;
+}
+.post-footer p{
+  float: left;
+  padding: 0 3px;
+}
+.post-footer i{
+  float: left;
+  padding: 0 3px;
+}
+.post-comment-part{
+  float: left;
+  padding: 0 3px;
+}
+.post-footer{
+  border-top: dashed;
+  padding-top: 10px;
 }
 
 /*new.html.erb*/
