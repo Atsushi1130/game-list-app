@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 /* index.html.erb */
+.paginate {
+  display: none;
+}
+.scroll-list {
+  padding: 0;
+}
 .post-container{
   margin: 10px auto;
   padding: 10px;
