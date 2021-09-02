@@ -24,7 +24,9 @@
         <% else %>
           <p>投稿者：名無しの投稿者</p>
         <% end %>
-        <p><%= post.created_at.to_s(:datetime_jp) %></p>
+        <div class="post_create_time">
+          <p><%= post.created_at.to_s(:datetime_jp) %></p>
+        </div>
         <div class="post-comment-part">
           <% if @current_user %>
             <% my_comment = Comment.where(postId: post.id,userId: @current_user.id) %>

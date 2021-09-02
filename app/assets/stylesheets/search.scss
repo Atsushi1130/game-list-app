@@ -29,7 +29,17 @@
   margin-top: 50px;
 }
 
-/* detail.html.erb & shared/_searchDetail.html.erb */
-.link-contents-container{
-  
-}
+ /* mobile M */
+ @media screen and (max-width: 376px){
+  .comments h3{
+    font-size: 22px;
+  }
+ }
+
+ /* mobile S */
+ @media screen and (max-width: 321px){
+  /* detail.html.erb */
+  .comments h3{
+    font-size: 15px;
+  }
+ }
