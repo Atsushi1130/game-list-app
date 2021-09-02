@@ -78,3 +78,33 @@ textarea[type="article"]{
     height: 80vh;
   }
  }
+
+ /* mobile L */
+ @media screen and (max-width: 426px){
+   /* detail.html.erb */
+  .contents-container{
+    padding: auto;
+    width: 80%;
+    background-color:#EEEEEE;
+    text-align: center;
+    float: none;
+  }
+  .comments{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    overflow-y: scroll;
+    height: 60vh;
+    float: none;
+    background-color: #F5FFFA;
+  }
+
+  .contents-container h1{
+    font-size: 24px;
+  }
+
+  /* new.html.erb */
+  textarea[type="article"]{
+    width: 250px;
+  }
+ }

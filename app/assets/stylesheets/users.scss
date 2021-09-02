@@ -44,7 +44,6 @@
   padding: 0 3px;
 }
 .post-footer i{
-  float: left;
   padding: 0 3px;
 }
 .post-comment-part{
@@ -203,12 +202,9 @@ input[type="password"] {
     }
 
     /* nec_leogin.html.erb */
-    .iPad{
-      display: block;
-    }
   }
-  /* iPhone 6/7/8Plus 以下 */
-  @media screen and (max-width: 415px){
+   /* mobile L */
+  @media screen and (max-width: 426px){
     input[type="name"],
     input[type="email"],
     input[type="password"] {
@@ -221,4 +217,20 @@ input[type="password"] {
     .iPhone{
       display: block;
     }
+
+    /* index.html.erb */
+    .post-container{
+      margin: 10px auto;
+      padding: 10px;
+      background-color:#EEEEEE;
+    }
+    .post-footer p{
+      float: none;
+      padding: 0px;
+    }
+
+    /* form */
+    #form{
+      width: 80%;
+      }
   }
