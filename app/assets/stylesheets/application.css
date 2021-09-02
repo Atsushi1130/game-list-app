@@ -280,3 +280,21 @@ header{
     border: solid 5px white;
   }
  }
+ /* mobile S */
+ @media screen and (max-width: 321px){
+  .logo{
+    font-size: 14px;
+    color: white;
+    width: 25%;
+  }
+  .search-box{
+    padding-top: 10px;
+    text-align: center;
+    padding-right: 23%;
+    font-size: 6px;
+  }
+  .search-textbox{
+    border: solid 0px white;
+    width: 100px;
+  }
+ }
