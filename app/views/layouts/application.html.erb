@@ -30,11 +30,13 @@
             </div>
           <% end %>
         </div>
-        <% if @current_user %>
-        <div class="user-page-link">
-          <p>ログイン中のユーザ：<%= link_to(@current_user.name,"/user/#{@current_user.id}/detail",{class: "app-text-dec-none"}) %></p>
-          </div>
-        <% end %>
+        <div class="response_pc">
+          <% if @current_user %>
+          <div class="user-page-link">
+            <p>ログイン中のユーザ：<%= link_to(@current_user.name,"/user/#{@current_user.id}/detail",{class: "app-text-dec-none"}) %></p>
+            </div>
+          <% end %>
+        </div>
         <div class="search-box">
           <%= form_tag("/search",:method => "get") do %>
             <input class="search-textbox" type="search" name="keyword" value=<%= @keyword %>>
@@ -43,15 +45,37 @@
             </button>
           <% end %>
         </div>
-        <div class="link-contents">
-          <p><%= link_to("投稿一覧へ","/",{class: "app-text-dec-none"}) %></p>
-          <% if @current_user %>
-            <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit",{class: "app-text-dec-none"}) %></p>
-            <p><%= link_to("ログアウト","/logout",{class: "app-text-dec-none"}) %></p>
-          <% else %>
-            <p><%= link_to("アカウント作成","/signup",{class: "app-text-dec-none"}) %></p>
-            <p><%= link_to("ログイン","/login_form",{class: "app-text-dec-none"}) %></p>
-          <% end %>
+        <div class="response_pc">
+          <div class="link-contents">
+            <p><%= link_to("投稿一覧へ","/",{class: "app-text-dec-none"}) %></p>
+            <% if @current_user %>
+              <p><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit",{class: "app-text-dec-none"}) %></p>
+              <p><%= link_to("ログアウト","/logout",{class: "app-text-dec-none"}) %></p>
+            <% else %>
+              <p><%= link_to("アカウント作成","/signup",{class: "app-text-dec-none"}) %></p>
+              <p><%= link_to("ログイン","/login_form",{class: "app-text-dec-none"}) %></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="less_than_iPad">
+          <div class="menu-trigger" href="">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <nav class="nav-list">
+            <ul>
+              <% if @current_user %>
+                <li><%= link_to(@current_user.name,"/user/#{@current_user.id}/detail",{class: "app-text-dec-none"}) %></li>
+                <li><%= link_to("登録情報の編集","/user/#{@current_user.id}/edit",{class: "app-text-dec-none"}) %></li>
+                <li><%= link_to("ログアウト","/logout",{class: "app-text-dec-none"}) %></li>
+              <% else %>
+                <li><%= link_to("アカウント作成","/signup",{class: "app-text-dec-none"}) %></li>
+                <li><%= link_to("ログイン","/login_form",{class: "app-text-dec-none"}) %></li>
+              <% end %>
+            </ul>
+          </nav>
+          <div class="overlay"></div>
         </div>
       </div>
     </header>
