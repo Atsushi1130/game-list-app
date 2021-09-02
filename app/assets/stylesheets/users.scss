@@ -52,7 +52,7 @@
   padding: 0 3px;
 }
 .post-footer{
-  border-top: dashed;
+  border-top:solid #C25100;
   padding-top: 10px;
 }
 
@@ -183,14 +183,29 @@ input[type="password"] {
  }
 
  /* メディアクエリ */
- /*iPad Pro以下*/
-  @media screen and (max-width: 1024px){
+ /* iPad 以下*/
+  @media screen and (max-width: 768px){
     #form{
-      width: 70%;
+      width: 60%;
       margin: 30px auto;
       padding: 20px;
       border: 1px solid #555;
       }
+    
+    /* index.html.erb */
+    .post-container{
+      width: 80%;
+    }
+    
+    /* detail.html.erb */
+    .user-detail-link{
+      width: 80%;
+    }
+
+    /* nec_leogin.html.erb */
+    .iPad{
+      display: block;
+    }
   }
   /* iPhone 6/7/8Plus 以下 */
   @media screen and (max-width: 415px){
