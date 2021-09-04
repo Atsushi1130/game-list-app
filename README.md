@@ -1,24 +1,17 @@
-# README
+使用環境
+-----------
+ruby 2.6.8
+rails 6.1.4
+heroku
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+起動
+-------
+```
+rails s
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+アプリ概要
+------
+日本国内で発売されたゲームの情報を共有するためのSNSです。
+誰でもゲームソフトに対してレビューをして、投稿することができます。
+投稿にはコメントを残すことも可能です。
